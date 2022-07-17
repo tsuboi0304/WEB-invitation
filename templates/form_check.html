@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>確認画面</title>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <header>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>確認画面</h1>    
+                </div>
+                <div class="col-sm-6" style=text-align:right;>
+                    <a href="/">Topへ戻る</a>    
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <hr>
+    <form action="/templates/form_done.html" method="post">
+        <p>お間違いがないかご確認をお願いいたします</p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td>氏名＜漢字＞</td>
+                    <td>{{ Lname_k }} &emsp; {{ Fname_k }}</td>
+                </tr>
+                <tr>
+                    <td>氏名＜ローマ字＞</td>
+                    <td>{{ Lname_r }} &emsp; {{ Fname_r }}</td>
+                </tr>
+                <tr>
+                    <td>連絡先＜メール＞</td>
+                    <td>{{ m_address }}</td>
+                </tr>
+                <tr>
+                    <td>参加可否</td>
+                    <td>{{ attendance }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <div style="display:inline-flex">
+            <form action="form" method="GET">
+                <button type="submit">戻る</button>
+            </form>
+                <br>
+            <form action="form_done" method="POST">
+                <input type="hidden", name="Lname_k" value="{{ Lname_k }}">
+                <input type="hidden", name="Fname_k" value="{{ Fname_k }}">
+                <input type="hidden", name="Lname_r" value="{{ Lname_r }}">
+                <input type="hidden", name="Fname_r" value="{{ Fname_r }}">
+                <input type="hidden", name="m_address" value="{{ m_address }}">
+                <input type="hidden", name="attendance" value="{{ attendance }}">
+                <button type="submit">登録する</button>
+            </form>
+        
+
+        </div>
+    </form>
+
+    <br>
+    
+    <hr>
+
+{% endblock %}
+</html>

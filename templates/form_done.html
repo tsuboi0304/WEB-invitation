@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>出欠入力フォーム</title>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <p>ご入力いただき&emsp;ありがとうございました</p>
+        <p>当時お会いできることを&emsp;心より楽しみにしております</p> <!--ここはIF文で出欠可否で"可"にチェックがついている人だけ表示する-->
+    </div>
+    <form action="/" method="GET">
+        <button type="submit">Topに戻る</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,85 @@
+header {
+    margin-top: 30px;
+    color: #2e99a9;
+}
+
+hr {
+    border-width: 3px;
+    border-color: #2e99a9;
+    margin: 30px 0;
+}
+
+div.centering-block {
+    text-align: center;
+    font-size: large;
+}
+
+h1 {
+    font-style: italic;
+    font-size: large;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1.usname_day{
+    text-align: center;
+    font: bold;
+    font-style: italic;
+    font-size: medium;
+}
+
+.centering-block .centering-block-inner {
+    text-align: left;
+    display: inline-block;
+}
+
+.centering-block .centering-block-inner .usname {
+    text-align: right;
+    margin-right: 30px;
+}
+
+.center {
+    text-align: center;
+}
+
+.centering-block .date {
+    text-align: left;
+    display: inline-block;
+}
+
+
+h1 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+table,
+td {
+    margin-left: 30px;
+    border: 1px solid #333;
+}
+
+input:required,
+input[type="email"]:invalid {
+    background-color: #ffb3b3;
+}
+input[type="text"]:valid,
+input[type="email"]:valid {
+    background: transparent;
+}
+
+button {
+    text-align: center;
+    padding: 1px 10px;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    background-color: #aeffbd;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bolder;
+    margin-right: 50px;
+    margin-left: 30px;
+
+}

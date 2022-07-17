@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>仮登録</title>
+{% endblock %}
+{% block body%}
+    <h2>仮登録フォーム</h2>
+    <p>お手数をおかけしますが&emsp;出欠入力にあたって</p>
+    <p>事前のメールアドレスの登録をお願いいたします</p>
+
+    <form action="create_check" method="POST">
+        <p>メールアドレス<input type="email" name="m_address" placeholder="例：xxx@example.com" autofocus required></p>
+        <button type="submit">登録する</button>
+    </form>
+{% endblock %}

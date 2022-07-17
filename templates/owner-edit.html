@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>編集画面</title>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <header>
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>出欠リスト</h1>    
+            </div>
+        </div>
+    </header>
+</div>
+
+   
+    <table>
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td>苗字＜漢字＞</td>
+                <td>名前＜漢字＞</td>
+                <td>苗字＜ローマ字＞</td>
+                <td>名前＜ローマ字＞</td>
+                <td>メールアドレス</td>
+                <td>出欠可否</td>
+                <td>ご祝儀</td>
+                <td>編集</td>
+            </tr>
+            <form method="POST">
+                <tr>
+                    <td>{{ posts.id }}</td>
+                    <td><input type="text" value={{ posts.Lname_k }} name="Lname_k" required></td>
+                    <td><input type="text" value={{ posts.Fname_k }} name="Fname_k" required></td>
+                    <td><input type="text" value={{ posts.Lname_r }} name="Lname_r" required></td>
+                    <td><input type="text" value={{ posts.Fname_r }} name="Fname_r" required></td>
+                    <td><input type="email" value={{ posts.m_address }} name="m_address" required></td>
+                    <td><input type="text" value={{ posts.attendance }} name="attendance"</td>
+                    <td><input type="number" value={{ posts.gift_money }} name="gift_money"</td>
+                    <td>
+                        <form action="/{{posts.id}}/edit" method="POST">
+                            <button type="submit">更新</button>
+                        </form>
+                    </td>
+                </tr>
+            </form>
+
+        </tbody>
+    </table>
+
+{% endblock %}

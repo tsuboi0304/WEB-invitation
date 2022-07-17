@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>出欠入力フォーム</title>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <header>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>出欠入力フォーム</h1>    
+                </div>
+                <div class="col-sm-6" style=text-align:right;>
+                    <a href="/">Topへ戻る</a>    
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <hr>
+    <form action="form_check" method="post">
+        <p>メールアドレスの仮登録ありがとうございました<br>
+        恐れ入りますが&emsp;下記入力フォームから<br>
+        出欠情報のご登録をお願いいたします</p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td>氏名＜漢字＞</td>
+                    <td><input type="text" placeholder="例：山田" name="Lname_k" autofocus required>
+                    <input type="text" placeholder="例：太郎" name="Fname_k" required></td>
+                </tr>
+                <tr>
+                    <td>氏名＜ローマ字＞</td>
+                    <td><input type="text" placeholder="例：Yamada" name="Lname_r" required>
+                    <input type="text" placeholder="例：Taro" name="Fname_r" required></td>
+                </tr>
+                <tr>
+                    <td>連絡先＜メール＞</td>
+                    <td><input type="email" placeholder="例：xxx@example.com" name="m_address" required></td>
+                </tr>
+                <tr>
+                    <td>参加可否</td>
+                    <td><input type="radio" value="可" name="attendance" checked>可
+                    <input type="radio" value="不可" name="attendance">不可</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <button type="submit">確認する</button>
+    </form>
+
+    <br>
+    
+    <hr>
+
+{% endblock %}
+</html>

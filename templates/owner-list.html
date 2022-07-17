@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>出欠リスト</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <header>
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>出欠リスト</h1>    
+            </div>
+        </div>
+    </header>
+</div>
+<a href="/logout" role="button">ログアウト</a>
+   
+    <table>
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td>苗字＜漢字＞</td>
+                <td>名前＜漢字＞</td>
+                <td>苗字＜ローマ字＞</td>
+                <td>名前＜ローマ字＞</td>
+                <td>メールアドレス</td>
+                <td>出欠可否</td>
+                <td>ご祝儀</td>
+                <td>オーナー操作</td>
+            </tr>
+        {% for posts in posts %}
+            <tr>
+                <td>{{ posts.id }}</td>
+                <td>{{ posts.Lname_k }}</td>
+                <td>{{ posts.Fname_k }}</td>
+                <td>{{ posts.Lname_r }}</td>
+                <td>{{ posts.Fname_r }}</td>
+                <td>{{ posts.m_address}}</td>
+                <td>{{ posts.attendance }}</td>
+                <td>{{ posts.gift_money }}</td>
+                <td>
+                    <a href="/{{posts.id}}/edit" role="button">編集</a>
+                    <a href="/{{posts.id}}/delete" role="button">削除</a>
+                </td>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <br>
+    <br>
+
+<br>
+{% endblock %}

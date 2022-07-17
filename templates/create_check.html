@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}   
+    <title>仮登録</title>
+{% endblock %}
+{% block body %}
+    <h2>メールアドレス確認画面</h2>
+    <br>
+        <p>下記メールアドレスでお間違いないでしょうか？</p>
+
+        <p>メールアドレス：{{ mail_address }}</p>
+
+        <div style="display:inline-flex">
+            <form action="create" method="GET">
+                <button type="submit">戻る</button>
+            </form>
+                <br>
+            <form action="create_done" method="POST">
+                <input type="hidden", name="m_address" value="{{ mail_address }}">
+                <button type="submit">登録する</button>
+            </form>
+        
+
+        </div>
+{% endblock %}

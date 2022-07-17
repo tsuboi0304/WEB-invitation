@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Welcome to Party</title>
+{% endblock %}
+
+{% block body %}
+    <div class="centering-block">
+        <h1>Welcome to Party</h1>
+        <img src="static/images/church.jpeg">
+
+        <h1 class="usname_day">Tarou and Hanako<br>
+        MAY 1st, 2022</h1>
+
+        <div class="centering-block-inner">
+            <p>皆様におかれましてはご清祥のこととお慶び申し上げます</p>
+            <p>このたび&emsp;私たちは結婚式を挙げることとなりました</p>
+            <p>皆様へのご挨拶とご披露をいたしたく</p>
+            <p>心ばかりの祝宴をご用意いたしました</p>
+            <p>ぜひご出席くださいますようお願い申し上げます</p>
+            <br>
+            <p>2022年○月吉日</p>
+ 
+            <div class="usname">山田&emsp;太郎<br>
+            田中&emsp;花子</div>
+        
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="center">記</div>
+        <br>
+        <div class="date">
+            <p>日&emsp;時&emsp;令和5月1日（日曜日）</p>
+            <p>受&emsp;付&emsp;午前9時30分～</p>
+            <p>挙&emsp;式&emsp;午前10時30分～</p>
+            <p>披露宴&emsp;午前11時15分～</p>
+            <p>場&emsp;所&emsp;〇〇ホテル</p>
+            <p>&emsp;&emsp;&emsp;&emsp;XX県XX市XXXX丁目XX-X</p>
+            <p>TEL&emsp;&emsp;050-xxxx-5026</p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <form action="/create" method="get">
+            <button type="submit">出欠入力フォーム</button>
+        </form>
+        <br>
+        <br>
+        <br>
+    </div>
+{% endblock %}

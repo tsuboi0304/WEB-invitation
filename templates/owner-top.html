@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>ログイン画面</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <header>
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>ログイン画面</h1>    
+            </div>
+        </div>
+    </header>
+</div>
+
+<form method="POST">    
+    <table>
+        <tbody>
+            <tr>
+                <td>ユーザーID</td>
+                <td><input type="text" placeholder="ユーザーID" name="username" autofocus required>
+            </tr>
+            <tr>
+                <td>パスワード</td>
+                <td><input type="password" placeholder="パスワード" name="password" required>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <button type="submit">ログイン</button>
+</form>
+
+<br>
+{% endblock %}
