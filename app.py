@@ -1,5 +1,5 @@
 from webbrowser import get
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, make_response
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required
@@ -8,6 +8,9 @@ import os
 import random
 from flask_mail import Mail, Message
 from werkzeug.security import generate_password_hash, check_password_hash
+from io import StringIO
+import csv
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///PreGuest.db'
@@ -210,6 +213,23 @@ def owner_delete(id):
     db.session.delete(posts)
     db.session.commit()
     return redirect("/list")
+
+@app.route('/export')
+def export(obj):
+
+    f = StringIO()
+    writer = csv.writer(f, quotechar='"', quoting=csv.QUOTE_ALL, lineterminator="\n")
+
+    if obj == 'Guest':
+        writer.writerow([ "id","Lname_k","Fname_k","Lname_r","Fname_r","m_address","attendance","gift_money"])
+        for u in Guest.query.all():
+            writer.writerow([u.id, u.username,u.gender,u.age,u.created_at])
+
+    res = make_response()
+    res.data = f.getvalue()
+    res.headers['Content-Type'] = 'text/csv'
+    res.headers['Content-Disposition'] = 'attachment; filename='+ obj +'.csv'
+    return res
 
 if __name__ == "__main__":
     app.run(debug=True)
