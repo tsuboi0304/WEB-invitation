@@ -1,7 +1,7 @@
 from base64 import encode
 from fileinput import filename
 from webbrowser import get
-from flask import Flask, render_template, request, redirect, make_response
+from flask import Flask, render_template, request, redirect, make_response, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required
@@ -174,6 +174,11 @@ def login():
         if check_password_hash(user.password, password):
             login_user(user) 
             return redirect('/list')
+        else:
+            # usernameまたはpasswordが誤っている旨のflashを表示
+            flash('ユーザーIDかパスワードが間違っています')
+            # loginページへリダイレクト
+            return redirect('/login')
     else:
         return render_template('owner-top.html')
 
