@@ -1,3 +1,5 @@
+from base64 import encode
+from fileinput import filename
 from webbrowser import get
 from flask import Flask, render_template, request, redirect, make_response
 from flask_sqlalchemy import SQLAlchemy
@@ -10,6 +12,7 @@ from flask_mail import Mail, Message
 from werkzeug.security import generate_password_hash, check_password_hash
 from io import StringIO
 import csv
+import urllib.request
 
 
 app = Flask(__name__)
@@ -214,7 +217,7 @@ def owner_delete(id):
     db.session.commit()
     return redirect("/list")
 
-@app.route('/export')
+@app.route('/export/<obj>')
 def export(obj):
 
     f = StringIO()
@@ -223,8 +226,8 @@ def export(obj):
     if obj == 'Guest':
         writer.writerow([ "id","Lname_k","Fname_k","Lname_r","Fname_r","m_address","attendance","gift_money"])
         for u in Guest.query.all():
-            writer.writerow([u.id, u.username,u.gender,u.age,u.created_at])
-
+            writer.writerow([u.id, u.Lname_k, u.Fname_k, u.Lname_r, u.Fname_r, u.m_address, u.attendance, u.gift_money])
+    
     res = make_response()
     res.data = f.getvalue()
     res.headers['Content-Type'] = 'text/csv'
