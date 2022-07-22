@@ -12,7 +12,6 @@ from flask_mail import Mail, Message
 from werkzeug.security import generate_password_hash, check_password_hash
 from io import StringIO
 import csv
-import urllib.request
 
 
 app = Flask(__name__)
