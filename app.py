@@ -1,7 +1,4 @@
-from base64 import encode
-from fileinput import filename
-from webbrowser import get
-from flask import Flask, render_template, request, redirect, make_response, flash
+from flask import Flask, render_template, request, redirect, make_response, flash, session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required
@@ -73,11 +70,16 @@ def create():
 
 @app.route("/create_check", methods=["GET","POST"])
 def create_check():
-    if request.method =='POST':
+    if request.method == 'POST':
         mail_address = request.form.get('m_address')
-        return render_template('create_check.html', mail_address=mail_address)
-    else:
-        return render_template('create.html')
+        searchmail = PreGuest.query.filter_by(m_address=mail_address).all()
+        print(searchmail)
+        #もしアドレスがDBに存在しなければ、create_check.htmlを返す
+        if searchmail == []:
+            return render_template('create_check.html', mail_address=mail_address)
+        else:
+            flash('すでに登録されているメールアドレスです')
+            return redirect('/create')
 
 @app.route("/create_done", methods=["GET","POST"])
 def create_done():
@@ -170,7 +172,7 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
 
-        user = User.query.filter_by(username=username).first() #usernameがない場合の処理は後で追加する
+        user = User.query.filter_by(username=username).first()
         if check_password_hash(user.password, password):
             login_user(user) 
             return redirect('/list')

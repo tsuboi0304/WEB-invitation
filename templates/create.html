@@ -11,4 +11,17 @@
         <p>メールアドレス<input type="email" name="m_address" placeholder="例：xxx@example.com" autofocus required></p>
         <button type="submit">登録する</button>
     </form>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class='flash'>
+        <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% endwith %}
+
 {% endblock %}
